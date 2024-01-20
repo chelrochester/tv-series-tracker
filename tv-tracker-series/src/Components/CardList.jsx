@@ -3,7 +3,7 @@ import SeriesCard from './SeriesCard';
 function CardList() {
     return(
         <>
-            <ul>
+            <ul className="card-list">
                 <SeriesCard 
                     title="Only Murder in the Building"
                     description="A trio solves murders in their apartment building for a podcast"
