@@ -2,14 +2,17 @@ import { useState } from 'react';
 import SeriesCard from './SeriesCard';
 import Form from './Form.jsx'
 import Modal from './Modal.jsx'
+import PropTypes from 'prop-types';
 
-function CardList() {
-    const [modalIsVisible, setModalIsVisible] = useState(true);
+const propTypes = {
+    isPosting: PropTypes.bool,
+    onStopPosting: PropTypes.func,
+};
+
+function CardList({ isPosting, onStopPosting }) {
     const [searchSeries, setSearchSeries] = useState();
 
-    function hideModalHandler() {
-        setModalIsVisible(false);
-    }
+   
 
     function changeSearchHandler(e) {
         setSearchSeries(e.target.value);
@@ -18,8 +21,8 @@ function CardList() {
 
     return(
         <>
-            {modalIsVisible && (
-                <Modal onClose={hideModalHandler}>
+            {isPosting && (
+                <Modal onClose={onStopPosting}>
                     <Form onChange={changeSearchHandler} />
                 </Modal>
             )}
@@ -43,5 +46,7 @@ function CardList() {
         </>
     )
 }
+
+CardList.propTypes = propTypes;
 
 export default CardList
