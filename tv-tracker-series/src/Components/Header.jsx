@@ -1,10 +1,13 @@
-import Form from './Form.jsx'
+
 
 export default function Header() {
     return (
-        <div className="header">
-            <p>hello</p>
-            <Form />
-        </div>
+        <header className="header">
+            <h1 className="header-title">tv series tracker</h1>
+            <p>
+                <button>New Post</button>
+            </p>
+            
+        </header>
     )
 }

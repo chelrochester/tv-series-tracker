@@ -1,11 +1,31 @@
+import { useState } from 'react';
 import SeriesCard from './SeriesCard';
+import Form from './Form.jsx'
+import Modal from './Modal.jsx'
 
 function CardList() {
+    const [modalIsVisible, setModalIsVisible] = useState(true);
+    const [searchSeries, setSearchSeries] = useState();
+
+    function hideModalHandler() {
+        setModalIsVisible(false);
+    }
+
+    function changeSearchHandler(e) {
+        setSearchSeries(e.target.value);
+    }
+
+
     return(
         <>
+            {modalIsVisible && (
+                <Modal onClose={hideModalHandler}>
+                    <Form onChange={changeSearchHandler} />
+                </Modal>
+            )}
             <ul className="card-list">
                 <SeriesCard 
-                    title="Only Murder in the Building"
+                    title={searchSeries}
                     description="A trio solves murders in their apartment building for a podcast"
                     release="release date: 12/12/12"
                 />
