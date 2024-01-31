@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import {useState} from 'react';
 import SeriesCard from './SeriesCard';
 import Form from './Form.jsx'
 import Modal from './Modal.jsx'
@@ -10,39 +11,29 @@ const propTypes = {
 };
 
 function CardList({ isPosting, onStopPosting }) {
-    const [searchSeries, setSearchSeries] = useState();
+   const [posts, setPosts] = useState([]);
 
-   
-
-    function changeSearchHandler(e) {
-        setSearchSeries(e.target.value);
-    }
+   function addPostHandler(postData){
+    setPosts((existingPosts) => [postData, ...existingPosts]);
+   }
 
 
     return(
         <>
             {isPosting && (
                 <Modal onClose={onStopPosting}>
-                    <Form onChange={changeSearchHandler} />
+                    <Form  
+                        onCancel={onStopPosting}
+                        onAddPost={addPostHandler}
+                    />
                 </Modal>
             )}
-            <ul className="card-list">
-                <SeriesCard 
-                    title={searchSeries}
-                    description="A trio solves murders in their apartment building for a podcast"
-                    release="release date: 12/12/12"
-                />
-                <SeriesCard 
-                    title="True Detective"
-                    description="An anthology of detective stories"
-                    release="release date: 12/12/12"
-                />
-                <SeriesCard 
-                    title="What We Do in the Shadows"
-                    description="A mockumentary about vampires in New Jersey"
-                    release="release date: 12/12/12"
-                />
-            </ul>
+            {posts.length > 0 && (<ul className="card-list">
+                {posts.map((post) => <SeriesCard key={post.title} title={post.title} description={post.description} release={post.release} />)}
+            </ul>)}
+            {posts.length === 0 && (<div className="noPosts">
+                <h3>Get started tracking your favorite shows...</h3>
+            </div>)}
         </>
     )
 }
