@@ -88,11 +88,6 @@
   transform: translate(-95%, -50%);
 }
 
-.card-list {
-  display: flex;
-  justify-content: space-around;
-}
-
 .post {
   margin: 1rem 0;
   padding: 1rem;
@@ -101,6 +96,17 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   animation: animate-in 1s ease-out forwards;
   
+}
+
+.posts {
+  list-style: none;
+  max-width: 80rem;
+  margin: 1rem auto;
+  padding: 1rem 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 30%);
+  justify-content: center;
 }
 
 .title {
@@ -119,7 +125,9 @@
   font-style: italic;
 }
 
-/* @keyframes animate-in {
+
+
+@keyframes animate-in {
   from {
     opacity: 0;
     transform: translateY(1rem);
@@ -128,4 +136,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-} */
+}

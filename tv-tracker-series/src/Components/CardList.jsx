@@ -28,7 +28,7 @@ function CardList({ isPosting, onStopPosting }) {
                     />
                 </Modal>
             )}
-            {posts.length > 0 && (<ul className="card-list">
+            {posts.length > 0 && (<ul className="posts">
                 {posts.map((post) => <SeriesCard key={post.title} title={post.title} description={post.description} release={post.release} />)}
             </ul>)}
             {posts.length === 0 && (<div className="noPosts">
