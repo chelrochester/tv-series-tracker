@@ -8,32 +8,31 @@ const propTypes = {
     onAddPost: PropTypes.func,
 };
 
-// eslint-disable-next-line no-unused-vars
 export default function Form({ onCancel, onAddPost }) {
     const searchElement = useRef();
+    const [searchTerm, setSearchTerm] = useState();
 
-    const { data, isPending, isError, error } = useQuery({
-        queryKey: ['events', {search: searchTerm }],
+    const { data, isPending, isError } = useQuery({
+        queryKey: ['shows', {search: searchTerm }],
         queryFn: () => fetchSeries(searchTerm)
     });
 
-    const [searchTerm, setSearchTerm] = useState();
-
     function changeSearchHandler(e) {
         setSearchTerm(e.target.value);
+        console.log(data);
     }
 
     //postData will be altered to API data
     function submitHandler(e) {
         e.preventDefault();
         setSearchTerm(searchElement.current.value)
-        // const postData = {
-        //     title: searchSeries,
-        //     description: searchSeries,
-        //     release: searchSeries
-        // }
-        // onAddPost(postData);
-        // onCancel();
+        const postData = data && data.length > 0 ? {
+            title: data[0].title,
+            description: data[0].description,
+            release: data[0].date
+        } : {};
+        onAddPost(postData);
+        onCancel();
     }
 
     let content = <p>add stuff here</p>;
@@ -42,7 +41,7 @@ export default function Form({ onCancel, onAddPost }) {
         content = <p>loading...</p>
     }
     if (isError) {
-        content = <p>{error}</p>
+        content = <p>error</p>
     }
     if (data) {
         content = <ul>

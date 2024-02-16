@@ -1,14 +1,26 @@
 // import { createContext, useState } from "react";
+// import PropTypes from 'prop-types';
+// import { fetchSeries } from "../util/http";
 
 // const seriesCtx = createContext({
-//     postItem: [],
+//     postItem: [
+//         // title: ,
+//         // description: ,
+//         // release: ,
+//     ],
 // });
 
-// // eslint-disable-next-line react/prop-types
+// const propTypes = {
+//     children: PropTypes.func,
+// };
+
 // export function SeriesContextProvider({children}) {
-//     // eslint-disable-next-line no-unused-vars
-//     const [seriesData, setSereiesData] = useState();
+//     const [seriesData, setSeriesData] = useState();
 //     const [modalIsVisible, setModalIsVisible] = useState(false);
+
+//     function queryData() {
+//         setSeriesData(fetchSeries)
+//     }
 
 //     function showModalHandler() {
 //       setModalIsVisible(true);
@@ -31,3 +43,5 @@
 //         </seriesCtx.Provider>
 //     )
 // }
+
+// SeriesContextProvider.propTypes = propTypes;

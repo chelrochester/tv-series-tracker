@@ -1,8 +1,8 @@
 export async function fetchSeries(searchTerm) {
-    let url = 'apiurl'
+    let url = 'https://api.tvmaze.com/search/shows'
 
     if (searchTerm) {
-        url += '?search=' + searchTerm
+        url += '?q=' + searchTerm
     }
 
     const response = await fetch(url);
