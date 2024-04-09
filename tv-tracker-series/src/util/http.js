@@ -14,7 +14,12 @@ export async function fetchSeries(searchTerm) {
         throw error;
     }
 
-    const { series } = await response.json();
+    const shows = await response.json();
 
-    return series;
+    return shows.map((result) => ({
+        id: result.show.id,
+        name: result.show.name,
+        image: result.image?.medium,
+        summary: result.summary,
+    }));
 }

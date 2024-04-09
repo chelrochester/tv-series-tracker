@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    release: PropTypes.string
+    name: PropTypes.string,
+    summary: PropTypes.string,
+    image: PropTypes.string,
+    id: PropTypes.number
 }
 
-function SeriesCard(props) {
+function SeriesCard(data) {
+    const { id, name, image, summary } = data;
+
     return (
-        <div className="post">
-            <h2 className="title">{props.title}</h2>
-            <p className="description">{props.description}</p>
-            <p className="release">{props.release}</p>
+        <div className="post" key={id}>
+            <h2 className='title'>{name}</h2>
+            <img src={image?.medium} alt={name} />
+            <p className='description'>{summary}</p>
         </div>
     )
 }

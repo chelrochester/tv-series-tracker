@@ -10,29 +10,29 @@ const propTypes = {
 
 export default function Form({ onCancel, onAddPost }) {
     const searchElement = useRef();
-    const [searchTerm, setSearchTerm] = useState();
+    const [searchTerm, setSearchTerm] = useState('');
 
     const { data, isPending, isError } = useQuery({
-        queryKey: ['shows', {search: searchTerm }],
-        queryFn: () => fetchSeries(searchTerm)
+        queryKey: ['shows', { search: searchTerm ?? ''}],
+        queryFn: fetchSeries
     });
 
     function changeSearchHandler(e) {
         setSearchTerm(e.target.value);
-        console.log(data);
+        console.log(searchTerm);
     }
 
     //postData will be altered to API data
     function submitHandler(e) {
         e.preventDefault();
-        setSearchTerm(searchElement.current.value)
-        const postData = data && data.length > 0 ? {
-            title: data[0].title,
-            description: data[0].description,
-            release: data[0].date
+        const postData = data && data.length > 0 && data[0].show ? {
+            title: data[0].show.name || 'N/A',
+            description: data[0].show.summary || 'No summary available',
+            release: data[0].show.id || 'N/A',
         } : {};
         onAddPost(postData);
         onCancel();
+        console.log(postData);
     }
 
     let content = <p>add stuff here</p>;
@@ -45,7 +45,9 @@ export default function Form({ onCancel, onAddPost }) {
     }
     if (data) {
         content = <ul>
-            {data.map(event => <li key={event.id}><seriesCard /></li>)}
+            
+            {data.map(show =>{ 
+            <li key={show.id}><seriesCard data={show} /></li>})}
         </ul>
     }
 
@@ -53,7 +55,7 @@ export default function Form({ onCancel, onAddPost }) {
         <>
             <form action="" className="form" onSubmit={submitHandler}>
                 <label htmlFor="series" className="label">Search for series:</label>
-                <input type="text" onChange={changeSearchHandler} ref={searchElement} />
+                <input type="text" value={searchTerm} onChange={changeSearchHandler} ref={searchElement}/>
                 <button type="button" onClick={onCancel}>Cancel</button>
                 <button>Submit</button>
             </form>
