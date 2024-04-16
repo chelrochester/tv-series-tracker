@@ -29,7 +29,7 @@ function CardList({ isPosting, onStopPosting }) {
                 </Modal>
             )}
             {posts.length > 0 && (<ul className="posts">
-                {posts.map((post) => <SeriesCard  key={post.id} name={post.name} summary={post.summary} image={post.image} />)}
+                {posts.map((post) => <SeriesCard key={post.title} title={post.title} description={post.description} release={post.release} />)}
             </ul>)}
             {posts.length === 0 && (<div className="noPosts">
                 <h3>Get started tracking your favorite shows...</h3>

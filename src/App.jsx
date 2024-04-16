@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import CardList from './Components/CardList';
-import Header from './Components/Header'
+import CardList from './components/CardList';
+import Header from './components/Header'
 // import { SeriesContextProvider } from './store/series-data-context';
 import './App.css'
 
