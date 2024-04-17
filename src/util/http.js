@@ -1,4 +1,6 @@
 export async function fetchSeries(searchTerm) {
+    console.log('Request URL:', url);
+    console.log('Request Parameters:', searchTerm);
     let url = 'https://api.tvmaze.com/search/shows';
 
     if (searchTerm) {
@@ -14,12 +16,12 @@ export async function fetchSeries(searchTerm) {
         throw error;
     }
 
-    const { shows } = await response.json();
+    const results = await response.json();
 
-    return shows.map((result) => ({
+    return results.map((result) => ({
         id: result.show.id,
         name: result.show.name,
-        image: result.image?.medium,
-        summary: result.summary,
+        image: result.show.image?.medium,
+        summary: result.show.summary,
     }));
 }
