@@ -20,7 +20,7 @@ export default function Form({ onCancel, onAddPost }) {
 
     console.log(data);
 
-    let content = <p>No series found</p>;
+    let content = <p>No series found.</p>;
 
     if (data) {
         console.log(data);
