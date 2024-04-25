@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchSeries } from '../util/http';
+// import { fetchSeries } from '../util/http';
+import SeriesCard from './SeriesCard';
 
 const propTypes = {
     onCancel: PropTypes.func,
@@ -10,43 +11,64 @@ const propTypes = {
 
 export default function Form({ onCancel, onAddPost }) {
     const searchElement = useRef(null);
-    const [searchSeries, setSearchSeries] = useState('');
-
-    const { data } = useQuery({
-        queryKey: ['series', { search: searchSeries }],
-        queryFn: () => fetchSeries(searchSeries),
-        staleTime: 5000,
+    const [searchTerm, setSearchTerm] = useState('');
+    const [queryEnabled, setQueryEnabled] = useState(false);
+    
+    const { data, isError, error } = useQuery({
+        queryKey: ['searchTerm', {searchTerm}],
+        queryFn: () => {
+            console.log('fetched')
+            if (submitHandler) {
+                return fetch(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
+                .then((response) => response.json())
+            }
+        },
+        enabled: queryEnabled,
     });
 
-    console.log(data);
+    console.log("Query Data: ", data);
+    console.log("Is Error: ", isError);
+    console.log("Error: ", error);
 
-    let content = <p>No series found.</p>;
+    console.log("Current search term:", searchElement);
 
-    if (data) {
+    let content;
+
+    if (isError) {
+        content = (
+            <div>
+                <p>There was an error fetching the series</p>
+                <p>{error.info?.message || 'Failed to fetch series.'}</p>
+            </div>
+        );
+    }
+
+    if (data && data.length > 0) {
         console.log(data);
-        content = <ul>
-            {data.map((series) => (
-                <li key={series.id}>
-                    <h2>{series.name}</h2>
-                    <img src={series.image} alt={series.name} />
-                    <p>{series.summary}</p>
-                </li>
-            ))}
-        </ul>
+        content = (
+            <ul>
+            {data.map((item) => {
+                console.log("Item: ", item);
+                const series = item.show;
+                return <SeriesCard key={series.id} series={series} title={series.title}  />
+            })}
+        </ul> 
+        ); 
+    } else {
+        content = <div>Loading or incomplete data...</div>;
     }
 
     //postData will be altered to API data
     function submitHandler(e) {
-        setSearchSeries(searchElement.current.value);
         e.preventDefault();
+        setSearchTerm(searchElement.current.value);
+        setQueryEnabled(true);
           
         const postData = {content}
         
         onAddPost(postData);
         onCancel();
     }
-
-
 
     return(
         <>
