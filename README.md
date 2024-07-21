@@ -2,7 +2,10 @@
 
 ## Landing Page
 
+Before posts:
 ![image](https://github.com/chelrochester/tv-tracker-series/assets/50529205/5ce38df8-4069-4cd7-85fc-20d0a5767aff)
+
+After posts:
 ![image](https://github.com/chelrochester/TVTrackerImage/blob/main/tv-tracker-complete.png?raw=true)
 
 ## Links
