@@ -1,4 +1,4 @@
-# tv-tracker-series
+# tv series tracker
 
 ## Landing Page
 
