@@ -7,16 +7,16 @@ const propTypes = {
     series: PropTypes.object.isRequired
 }
 
-function SeriesCard({ series, title }) {
+function SeriesCard({ series }) {
     console.log("Series data:", series);
 
     return (
         <div className="post">
            {series && (
                 <>
-                    <h2 className="title">{title || 'Title not available'}</h2>
-                    <p className="description">{series.description? series.description : 'Description not available'}</p>
-                    <p className="release">{series.release? series.release : 'Release date not available'}</p>
+                    <h2 className="title">{series.name || 'Title not available'}</h2>
+                    <p className="description">{series.summary ? series.summary.replace(/<\/?[^>]+(>|$)/g, "") : 'Description not available'}</p>
+                    <p className="release">{series.premiered || 'Release date not available'}</p>
                 </>
             )}    
         </div>
