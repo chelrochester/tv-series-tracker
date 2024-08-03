@@ -23,11 +23,11 @@ Before you begin, ensure you have the following installed:
 ### Installation
 1. Clone the repository to your local machine:
 
-   ```git clone git@github.com:chelrochester/space-tourism-image.git```
+   ```git clone git@github.com:chelrochester/tv-series-tracker.git```
 
 2. Navigate to the project directory:
 
-```cd space-tourism-image```
+```cd tv-series-tracker```
 
 3. Install the project dependencies:
 
