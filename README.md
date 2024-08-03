@@ -1,4 +1,9 @@
 # TV Series Tracker
+![Node.js](https://img.shields.io/badge/Node.js-18.0.0-green)
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![CSS](https://img.shields.io/badge/CSS-3-blue)
+![HTML](https://img.shields.io/badge/HTML-5-orange)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
 
 ## Table of contents
   - [Prerequisites](#prerequisites)
