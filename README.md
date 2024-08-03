@@ -1,6 +1,7 @@
 # TV Series Tracker
 
 ## Table of contents
+  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Pulling the Latest Changes](#pulling-the-latest-changes)
   - [Working on a New Feature or Bugfix](#working-on-a-new-feature-or-bugfix)
