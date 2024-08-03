@@ -1,4 +1,69 @@
-# tv series tracker
+# TV Series Tracker
+
+## Table of contents
+  - [Installation](#installation)
+  - [Pulling the Latest Changes](#pulling-the-latest-changes)
+  - [Working on a New Feature or Bugfix](#working-on-a-new-feature-or-bugfix)
+  - [Committing Your Changes](#committing-your-changes)
+  - [Pushing Changes to Remote](#pushing-changes-to-remote)
+  - [Creating a Pull Request](#creating-a-pull-request)
+  - [Deploying to Production](#deploying-to-production)
+  - [Landing Page](#landing-page)
+  - [What I've Learned](#what-ive-learned)
+  - [Fetching Data](#fetching-data)
+  - [Handling Forms](#handling-forms)
+
+### Prerequisites
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/en/download/)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
+- [React.js](https://reactjs.org/)
+
+### Installation
+1. Clone the repository to your local machine:
+
+   ```git clone git@github.com:chelrochester/space-tourism-image.git```
+
+2. Navigate to the project directory:
+
+```cd space-tourism-image```
+
+3. Install the project dependencies:
+
+```npm install```
+
+### Pulling the Latest Changes
+Before starting any new work, ensure you have the latest changes from the main repository:
+
+```git pull origin main```
+
+### Working on a New Feature or Bugfix
+Create a new branch for your work to keep the main branch clean:
+
+```git checkout -b feature/your-feature-name```
+
+### Committing Your Changes
+Commit your changes with a clear and concise commit message:
+
+```git add .```
+```git commit -m "Add your commit message here"```
+
+### Pushing Changes to Remote
+Push your changes to the remote repository:
+
+```git push origin feature/your-feature-name```
+
+### Creating a Pull Request
+Once your feature or bugfix is complete, create a pull request from your branch to the main branch on GitHub.
+
+### Deploying to Production
+To push the changes to the production environment, follow the deployment guidelines of your project. For example:
+
+```git checkout main```
+```git merge feature/your-feature-name```
+```git push origin main```
+
+
 
 ## Landing Page
 
