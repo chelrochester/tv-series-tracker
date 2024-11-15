@@ -13,6 +13,7 @@ export default function CardList({ isPosting, onStopPosting }) {
     const [posts, setPosts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [queryEnabled, setQueryEnabled] = useState(false);
+    const [showMore, setShowMore] = useState(null);
 
     useEffect(() => {
         async function fetchSeries() {
@@ -41,6 +42,10 @@ export default function CardList({ isPosting, onStopPosting }) {
         setQueryEnabled(true);
     }
 
+    const handleToggle = (index) => {
+        setShowMore(showMore === index ? null : index);
+    }
+
     return (
         <>
             {isPosting && (
@@ -50,10 +55,12 @@ export default function CardList({ isPosting, onStopPosting }) {
             )}
             {posts.length > 0 && (
                 <ul className="posts">
-                    {posts.map((post) => (
+                    {posts.map((post, index) => (
                         <SeriesCard
                             key={post.id}
                             series={post}
+                            showMore={showMore === index}
+                            onToggle={() => handleToggle(index)}
                         />
                     ))}
                 </ul>

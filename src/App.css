@@ -19,7 +19,6 @@
   text-align: center;
   display: flex;
   justify-content: space-between;
-  /* width: 100%; */
   align-items: center;
   border-bottom: 2px solid #ece1fa;
 }
@@ -59,11 +58,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.label {
+/* .label {
   padding: .5rem;
   align-self: start;
   margin-left: 4.5rem;
-}
+} */
 
 .backdrop {
   position: fixed;
