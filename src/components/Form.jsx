@@ -19,8 +19,10 @@ export default function Form({ onCancel, onSearch }) {
         <form className="form" onSubmit={submitHandler}>
             <label htmlFor="series" className="label">Search for series:</label>
             <input type="text" ref={searchElement} />
-            <button type="button" onClick={onCancel}>Cancel</button>
-            <button type="submit">Submit</button>
+            <div className='formButton'>
+                <button type="button" onClick={onCancel}>Cancel</button>
+                <button type="submit">Submit</button>
+            </div>
         </form>
     );
 }
